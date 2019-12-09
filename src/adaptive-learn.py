@@ -1,5 +1,5 @@
 import numpy as np
-from adaptive_learning_model import adaptive_learning_test
+from adaptiveLearnModel import adaptive_learning_test
 
 if __name__ == "__main__":
 
