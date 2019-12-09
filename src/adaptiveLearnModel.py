@@ -29,29 +29,28 @@ class adaptive_learning_test():
             D. e
             """
 
-        self.answer_letter_to_question_dict = {'A': 'The longest edge',
-                                               'B': 'The smalled angle',
-                                               'C': 'The shortest edge',
-                                               'D': 'The area of the triangle'}
-
-        self.question_answers = {'Q1': 'A',
-                                 'Q2': 'C',
-                                 'Q3': 'C'}
-
-        self.question_answers_text = {'Q1': 'The longest edge',
-                                      'Q2': 'π',
-                                      'Q3': '√10'}
-
+        self.question_names = ['Q1', 'Q2', 'Q3']
         self.question_ids = {'Q1': 0,
                              'Q2': 1,
                              'Q3': 2}
-
-        self.question_names = ['Q1', 'Q2', 'Q3']
         self.question_dict = {'Q1': self.Q1,
                               'Q2': self.Q2,
                               'Q3': self.Q3}
 
-        self.total_correct_answers = 2
+
+        self.question_answers = {'Q1': 'A',
+                                 'Q2': 'C',
+                                 'Q3': 'C'}
+        self.question_answers_text = {}
+        self._get_text_answers()
+        # self.question_answers_text = {'Q1': 'The longest edge',
+        #                               'Q2': 'π',
+        #                               'Q3': '1.8^2'}
+
+
+
+
+        self.total_correct_answers = 5
         self.correct_answers = np.array([0, 0, 0])
         self.remaining_correct_answers = self.total_correct_answers - self.correct_answers
         self.p = self.remaining_correct_answers / np.sum(self.remaining_correct_answers)
@@ -60,6 +59,11 @@ class adaptive_learning_test():
         self.questions_blank_answers = {}
         for question_name in self.question_names:
             self.get_multi_choice_options(question_name)
+
+    def _get_text_answers(self):
+        for question_name in self.question_names:
+            question_lines = [line.strip() for line in self.question_dict[question_name].split('\n') if line.strip() != '']
+            self.question_answers_text[question_name] = [line[3:] for line in question_lines if line[0] == self.question_answers[question_name]][0]
 
     def update_correct_answers(self, question_name):
         self.correct_answers[self.question_ids[question_name]] += 1
