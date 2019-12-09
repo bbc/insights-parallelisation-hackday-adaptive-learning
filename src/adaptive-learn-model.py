@@ -1,7 +1,7 @@
 import numpy as np
 from random import shuffle
 
-class cerego_test():
+class adaptive_learning_test():
 
     def __init__(self):
 

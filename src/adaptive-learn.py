@@ -1,9 +1,9 @@
 import numpy as np
-from myceregosource import cerego_test
+from adaptive_learning_model import adaptive_learning_test
 
 if __name__ == "__main__":
 
-    the_test = cerego_test()
+    the_test = adaptive_learning_test()
 
     while np.sum(the_test.remaining_correct_answers) > 0:
         question_name = the_test.choose_a_question()
