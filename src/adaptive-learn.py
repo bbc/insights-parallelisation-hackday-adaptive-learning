@@ -1,9 +1,10 @@
 import numpy as np
 from adaptiveLearnModel import adaptive_learning_test
+import sys
 
-if __name__ == "__main__":
-
+def main():
     the_test = adaptive_learning_test()
+    CURSOR_UP_ONE = '\x1b[1A'
 
     while np.sum(the_test.remaining_correct_answers) > 0:
         question_name = the_test.choose_a_question()
@@ -13,7 +14,12 @@ if __name__ == "__main__":
 
         if user_answer_text == the_test.question_answers_text[question_name]:
 
+            sys.stdout.write(CURSOR_UP_ONE)
             print("Correct, well done!")
             the_test.update_correct_answers(question_name)
         else:
+            sys.stdout.write(CURSOR_UP_ONE)
             print("Sorry, that is incorrect!")
+
+if __name__ == "__main__":
+    main()
