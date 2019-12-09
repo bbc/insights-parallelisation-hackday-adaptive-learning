@@ -36,7 +36,7 @@ class adaptive_learning_test():
 
         self.question_answers = {'Q1': 'A',
                                  'Q2': 'C',
-                                 'Q3': 'B'}
+                                 'Q3': 'C'}
 
         self.question_answers_text = {'Q1': 'The longest edge',
                                       'Q2': 'π',
