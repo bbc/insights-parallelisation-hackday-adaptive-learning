@@ -20,5 +20,8 @@ number_of_trials: number of questions that we are simulating
 n_jobs: number of cores to parallelise over
 
 ## Output
-The output of the simulation is saved in a csv in the data folder: phonics_MCMC_simulation_data_{int(np.round(time.time(), 0))}.csv 
+The output of the simulation is saved in a csv in the data folder: 
+```
+phonics_MCMC_simulation_data_{int(np.round(time.time(), 0))}.csv 
+```
 Note that this does not overwrite previous simulations but creates a new file. Therefore, make sure you delete data files if you don't need them.
