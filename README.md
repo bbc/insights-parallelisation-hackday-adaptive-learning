@@ -8,7 +8,7 @@ python adaptive-learn.py
 ```
 ...and enjoy!
 
-# generate_phonics_data.p
+# generate_phonics_data
 Used to simulate users playing the phonics tests - We don't have nearly enough data to give good coverage of all possible versions of the tests (~650m possible combinations in the multiple choice test). We use aggregated level stats for how frequently a question is answered incorrectly and assume that this is independent of the other 3 words chosen. 
 
 ## How to Run
