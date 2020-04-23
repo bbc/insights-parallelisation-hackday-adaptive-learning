@@ -5,10 +5,9 @@ import tqdm
 
 class phonics_MCMC_simulator():
 
-    def __init__(self, number_of_trials, n_jobs = 1):
+    def __init__(self, number_of_trials):
 
         self.number_of_trials = number_of_trials
-        self.n_jobs = n_jobs
 
         print("loading data files...")
         self.df_wrong_probs = self.load_data('../data/wrong_probs.csv')
@@ -81,15 +80,15 @@ class phonics_MCMC_simulator():
     def _generate_phonics_test_data(self, number_of_trials):
 
         tic = time.time()
-
+        output = []
         with tqdm.tqdm(total=number_of_trials) as self.progress:
             for i in range(number_of_trials):
-                self._generate_single_phonics_test_data()
+                output.append(self._generate_single_phonics_test_data())
 
         df = pd.DataFrame(columns=[f'option{i}' for i in range(1, 5)] + ['answer'],
                           index=range(number_of_trials),
-                          data=parallel_output)
+                          data=output)
 
-        print(f"Took {np.round(time.time() - tic,3)} seconds running {number_of_trials} trials across {self.n_jobs} cores")
+        print(f"Took {np.round(time.time() - tic,3)} seconds running {number_of_trials}")
 
         return df

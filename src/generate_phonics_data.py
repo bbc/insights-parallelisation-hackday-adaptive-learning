@@ -10,15 +10,9 @@ def main():
         default = 1000,
         help="""number of trials to perform in MCMC simulator"""
     )
-    parser.add_argument(
-        '--n_jobs',
-        default=1,
-        help="""number of parallel processes"""
-    )
     args = parser.parse_args()
     tic = time.time()
-    phonics_MCMC_simulator(number_of_trials = int(args.number_of_trials),
-                           n_jobs = int(args.n_jobs))
+    phonics_MCMC_simulator(number_of_trials = int(args.number_of_trials))
 
 if __name__ == "__main__":
     main()
