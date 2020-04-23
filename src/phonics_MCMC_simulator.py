@@ -1,8 +1,6 @@
 import numpy as np
 import time
 import pandas as pd
-from joblib import parallel_backend
-from joblib import Parallel, delayed
 import tqdm
 
 class phonics_MCMC_simulator():
@@ -85,9 +83,8 @@ class phonics_MCMC_simulator():
         tic = time.time()
 
         with tqdm.tqdm(total=number_of_trials) as self.progress:
-            with parallel_backend('threading', n_jobs=self.n_jobs):
-                parallel_output = Parallel()(
-                    delayed(self._generate_single_phonics_test_data)() for i in range(number_of_trials))
+	    for i in range(number_of_trials):
+	        self._generate_single_phonics_test_data()                
 
         df = pd.DataFrame(columns=[f'option{i}' for i in range(1, 5)] + ['answer'],
                           index=range(number_of_trials),
