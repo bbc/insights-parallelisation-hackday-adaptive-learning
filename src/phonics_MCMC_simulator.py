@@ -83,8 +83,8 @@ class phonics_MCMC_simulator():
         tic = time.time()
 
         with tqdm.tqdm(total=number_of_trials) as self.progress:
-	    for i in range(number_of_trials):
-	        self._generate_single_phonics_test_data()                
+            for i in range(number_of_trials):
+                self._generate_single_phonics_test_data()
 
         df = pd.DataFrame(columns=[f'option{i}' for i in range(1, 5)] + ['answer'],
                           index=range(number_of_trials),
